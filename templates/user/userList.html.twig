@@ -1,0 +1,24 @@
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Date naissance</th>
+        <th scope="col">Typologie familiale</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <th scope="row">{{ user.id }}</th>
+        <th scope="row">{{ user.firstname }}</th>
+        <th scope="row">{{ user.lastname }}</th>
+        <th scope="row">{{ user.birthday|date('d/m/Y') }}</th>
+        <th scope="row">{{ user.familyType}}</th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
