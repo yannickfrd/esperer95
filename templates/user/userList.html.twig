@@ -8,6 +8,7 @@
         <th scope="col">Nom</th>
         <th scope="col">Date naissance</th>
         <th scope="col">Typologie familiale</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +19,8 @@
         <th scope="row">{{ user.lastname }}</th>
         <th scope="row">{{ user.birthday|date('d/m/Y') }}</th>
         <th scope="row">{{ user.familyType}}</th>
+        <th scope="row">
+            <a href="#" data-id="{{ user.id}}" class="btn-delete btn btn-danger btn-sm" role="button">Suppression</a></th>
     </tr>
     {% endfor %}
     </tbody>
