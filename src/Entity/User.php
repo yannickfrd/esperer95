@@ -37,6 +37,11 @@ class User
      */
     private $birthday;
 
+    public function __toString(): string
+    {
+        return date_format(new \DateTime($this->getBirthday()), "d/m/Y");
+    }
+
     public function getId(): ?int
     {
         return $this->id;

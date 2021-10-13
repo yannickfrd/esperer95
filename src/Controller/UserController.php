@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserFormType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'user')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        UserRepository $userRepository
+    ): Response
     {
         $user = new User();
         $form = $this->createForm(UserFormType::class, $user)->handleRequest($request);
@@ -35,7 +40,8 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'users' => $userRepository->getAllUserByLastname()
         ]);
     }
 }
